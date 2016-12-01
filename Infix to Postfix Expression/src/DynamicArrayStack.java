@@ -76,8 +76,3 @@ public class DynamicArrayStack<AnyType> implements Stack<AnyType>
   }
 }
 
-/*  in the pop method, if the number of values in the stack is ¼ the
-amount of current storage in the stack then shrink the amount of storage in the stack to ½ of its current size.
-You cannot use the built in version of this data structure in the Java Collections Framework.*/
-
-
