@@ -4,18 +4,12 @@ import java.util.Scanner;
 
 public class TreeCreation 
 {
-	private BinaryTree data;
-	public BinaryTree getData()
-	{
-		return data;
-	}
-	public BinaryTree createTree() throws FileNotFoundException
+	public LinkedQueue<String> getQueue()
 	{
 		File file = new File("Project3.txt");
 		Scanner input = new Scanner(file);
-		LinkedStack<BinaryTree> stack  = new LinkedStack <BinaryTree>();
-		
-		while(input.hasNextLine()) 
+				
+		if(input.hasNextLine()) 
 		{
 			LinkedQueue<String> q = new LinkedQueue<String>();
 			String line = input.nextLine();
@@ -29,7 +23,15 @@ public class TreeCreation
 				if(splited[i] != " ")
 				q.enqueue(splited[i]);
 			} 
-					
+			return q;
+		}
+		
+		
+	public BinaryTree createTree() throws FileNotFoundException
+	{
+		LinkedStack stack = new LinkedStack();
+		LinkedQueue<String> q = new LinkedQueue<String>();
+		q = getQueue();
 			// now we have a Queue and a Stack to create Tree 
 			
 			while(!q.isEmpty())
@@ -63,7 +65,9 @@ public class TreeCreation
 
 
 	@Override
-	public String toString() {
+	public String toString() 
+	{
+		
 		return "TreeCreation []";
 	}
 
