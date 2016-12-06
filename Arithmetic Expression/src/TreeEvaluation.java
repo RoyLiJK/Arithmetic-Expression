@@ -4,9 +4,9 @@ import java.util.Scanner;
 public class TreeEvaluation 
 {
 	
-	public void evaluation(BinaryTree inputTree)
+	public int evaluation(BinaryTree inputTree)
 	{
-		LinkedStack<BinaryTree> stack  = new LinkedStack <BinaryTree>();	
+		LinkedStack<Comparable> stack  = new LinkedStack ();	
 		Iterator itr = inputTree.iterator();
 	 
 		while(itr.hasNext())
@@ -17,10 +17,10 @@ public class TreeEvaluation
 			{
 				if(isInteger((int) itr.next()))
 				{
-					int result = Integer.parseInt((String) itr.next());
+					int result = Integer.parseInt((String) (itr.next()) );
 					stack.push(result);
 				}
-				else
+				else // not integer
 				{
 					String input;
 					 // Create a Scanner object for keyboard input.
@@ -30,16 +30,35 @@ public class TreeEvaluation
 				      System.out.println("Please enter a number: ");			     
 				      input = keyboard.nextLine();
 				      stack.push(input);
-
 				}
 			}
-			else
+			else // operator
 			{
+				int rightOperand = (int) stack.pop();
+				int leftOperand = (int) stack.pop();
+				int result = 0;
+				if(itr.next().equals("+"))
+				{
+					result = leftOperand + rightOperand;
+				}
+				else if(itr.next().equals("-"))
+				{
+					result = leftOperand - rightOperand;
+				}
+				else if(itr.next().equals("*"))
+				{
+					result = leftOperand * rightOperand;
+				}
+				else if(itr.next().equals("/"))
+				{
+					result = leftOperand / rightOperand;
+				}
 				
+				stack.push(result);
 			}
 			
 		}
-		
+		return (int) stack.pop();
 	
 	}
 	
