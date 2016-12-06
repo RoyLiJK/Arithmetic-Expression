@@ -4,6 +4,11 @@ import java.util.Scanner;
 
 public class TreeCreation 
 {
+	private BinaryTree data;
+	public BinaryTree getData()
+	{
+		return data;
+	}
 	public BinaryTree createTree() throws FileNotFoundException
 	{
 		File file = new File("Project3.txt");
@@ -24,9 +29,7 @@ public class TreeCreation
 				if(splited[i] != " ")
 				q.enqueue(splited[i]);
 			} 
-			
-			
-			
+					
 			// now we have a Queue and a Stack to create Tree 
 			
 			while(!q.isEmpty())
