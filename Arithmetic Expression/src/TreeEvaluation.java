@@ -1,55 +1,62 @@
 import java.util.Iterator;
 import java.util.Scanner;
 
-public class TreeEvaluation 
+public class TreeEvaluation<AnyType> 
 {
 	
-	public int evaluation(BinaryTree inputTree)
+	
+	public int evaluation(BinaryTree<String> inputTree)
 	{
-		LinkedStack<Comparable> stack  = new LinkedStack ();	
-		Iterator itr = inputTree.iterator();
+		LinkedStack<Integer> stack  = new LinkedStack ();	
+		
+		Iterator<String> itr = inputTree.iterator();
 	 
-		while(itr.hasNext())
+		while( itr.hasNext())
 		{
+			AnyType value =    (AnyType) itr.next();
 			
-			
-			if(!isOperator(itr.next()))		
+			if(!isOperator(value))		
 			{
-				if(isInteger((int) itr.next()))
+				if(isInteger( value))
 				{
-					int result = Integer.parseInt((String) (itr.next()) );
-					stack.push(result);
+					
+					stack.push((Integer) value);
+					System.out.println("print test if is integer  " + value );
 				}
+				
 				else // not integer
 				{
-					String input;
+					Integer input;
 					 // Create a Scanner object for keyboard input.
 				      Scanner keyboard = new Scanner(System.in);
 				      
 				      // Prompt the user for a number.
 				      System.out.println("Please enter a number: ");			     
-				      input = keyboard.nextLine();
+				      input = keyboard.nextInt();
 				      stack.push(input);
+				      
 				}
 			}
 			else // operator
 			{
-				int rightOperand = (int) stack.pop();
-				int leftOperand = (int) stack.pop();
+				AnyType right =   (AnyType) stack.pop();
+				AnyType left =  (AnyType) stack.pop();
+				int rightOperand = (int) right;
+				int leftOperand = (int) left;
 				int result = 0;
-				if(itr.next().equals("+"))
+				if(value.equals("+"))
 				{
 					result = leftOperand + rightOperand;
 				}
-				else if(itr.next().equals("-"))
+				else if(value.equals("-"))
 				{
 					result = leftOperand - rightOperand;
 				}
-				else if(itr.next().equals("*"))
+				else if(value.equals("*"))
 				{
 					result = leftOperand * rightOperand;
 				}
-				else if(itr.next().equals("/"))
+				else if(value.equals("/"))
 				{
 					result = leftOperand / rightOperand;
 				}
@@ -62,12 +69,15 @@ public class TreeEvaluation
 	
 	}
 	
-	public boolean isInteger(int object)
+	public boolean isInteger(AnyType value)
 	{
-		if( object > 0 && object < 999)
-		{
-			return true;
-		}
+		
+			if(  value instanceof Integer )
+			{
+				return true;
+			}
+			
+		
 		return false;
 	}
 	
@@ -80,3 +90,4 @@ public class TreeEvaluation
 		return false;
 	}
 }
+

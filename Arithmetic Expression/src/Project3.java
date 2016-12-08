@@ -27,12 +27,12 @@ public class Project3 {
 		while (input.hasNextLine()) {
 			String line = input.nextLine();
 			TreeCreation t = new TreeCreation();
-			t.createTree(line);
+			t.createTree(line).print();;
 
 			TreeEvaluation ev = new TreeEvaluation();
-			ev.evaluation(t.createTree(line));
 			
-			System.out.println();
+			
+			System.out.println(ev.evaluation(t.createTree(line)));
 			System.out.println("-----------------------------------------------");
 			System.out.println();
 			// the Queue should now be EMPTY and stack should now contain only

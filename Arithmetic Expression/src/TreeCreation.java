@@ -51,10 +51,7 @@ public class TreeCreation {
 		return false;
 	}
 
-	public Iterator iterator() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }
 
