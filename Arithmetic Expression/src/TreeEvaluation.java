@@ -44,7 +44,9 @@ public class TreeEvaluation<AnyType>
 						{	
 							int it = Integer.parseInt((String) o);
 							stack.push(it);
-							System.out.println("push successful  " + o );
+							
+							System.out.println("push successful  " +  stack.top() );
+							
 						}
 				
 						else // not integer
@@ -58,19 +60,26 @@ public class TreeEvaluation<AnyType>
 							input = keyboard.nextInt();
 							stack.push(input);
 							
-							System.out.println("push successful ");	
-										      
-							
+							System.out.println("push successful "+  stack.top() );	
+									      
 						}
+					
+						
 					}
 					else // operator
 					{
-						System.out.println("start testing this part ");
-						System.out.println(stack.top());
+						if(!stack.isEmpty())
+						{
+							System.out.println("not empty ");
+						}else
+						{
+							System.out.println("empty ");
+						}
 						
-						int right =    (int) stack.pop();
+						
+						int right =  (int) stack.pop();
 							
-						int left =    (int) stack.pop();
+						int left =   (int) stack.pop();
 						int rightOperand = (int) right;
 						int leftOperand = (int) left;
 						int result = 0;
