@@ -3,30 +3,53 @@ import java.util.Scanner;
 
 public class TreeEvaluation<AnyType> 
 {
+/*	private static void printTree(BinaryTree tree)
+	{
+		Iterator i = tree.iterator();
+		while(i.hasNext())
+		{
+			Object o = i.next();
+			if(o instanceof BinaryTree)
+			{
+				printTree((BinaryTree) o);
+			}
+			else
+			{
+				System.out.println(o);
+			}
+		}
+	}
+	*/
 	
 	
-	public int evaluation(BinaryTree<String> inputTree)
+	public int evaluation(BinaryTree inputTree)
 	{
 		LinkedStack<Integer> stack  = new LinkedStack ();	
 		
-		Iterator<String> itr = inputTree.iterator();
-	 
-		while( itr.hasNext())
+		
+		Iterator i = inputTree.iterator();
+		while(i.hasNext())
 		{
-			String value =   String.valueOf(itr.next());
-			System.out.println(value);
-			if(!isOperator(value))		
+			Object o = i.next();
+			if(o instanceof BinaryTree)
 			{
-				if(isInteger( value))
-				{
+				evaluation((BinaryTree) o);
+			}
+			else
+			{
 					
-					stack.push(Integer.parseInt(value));
-					System.out.println("print test if is integer  " + value );
-				}
+					if(!isOperator(o))		
+					{
+						if(isInteger(o))
+						{
+					
+							stack.push( (Integer) o);
+							System.out.println("print test if is integer  " + o );
+						}
 				
-				else // not integer
-				{
-					Integer input;
+						else // not integer
+						{
+							Integer input;
 					 // Create a Scanner object for keyboard input.
 				      Scanner keyboard = new Scanner(System.in);
 				      
@@ -35,44 +58,44 @@ public class TreeEvaluation<AnyType>
 				      input = keyboard.nextInt();
 				      stack.push(input);
 				      
-				}
-			}
-			else // operator
-			{
-				AnyType right =   (AnyType) stack.pop();
-				AnyType left =  (AnyType) stack.pop();
-				int rightOperand = (int) right;
-				int leftOperand = (int) left;
-				int result = 0;
-				if(value.equals("+"))
-				{
-					result = leftOperand + rightOperand;
-				}
-				else if(value.equals("-"))
-				{
-					result = leftOperand - rightOperand;
-				}
-				else if(value.equals("*"))
-				{
-					result = leftOperand * rightOperand;
-				}
-				else if(value.equals("/"))
-				{
-					result = leftOperand / rightOperand;
-				}
+						}
+					}
+					else // operator
+					{
+						int right =   stack.pop();
+						int left =   stack.pop();
+						int rightOperand = (int) right;
+						int leftOperand = (int) left;
+						int result = 0;
+						if(o.equals("+"))
+						{
+							result = leftOperand + rightOperand;
+						}
+						else if(o.equals("-"))
+						{
+							result = leftOperand - rightOperand;
+						}
+						else if(o.equals("*"))
+						{
+							result = leftOperand * rightOperand;
+						}
+						else if(o.equals("/"))
+						{
+							result = leftOperand / rightOperand;
+						}
 				
-				stack.push(result);
+						stack.push(result);
+					}
+				}
 			}
 			
-		}
 		return (int) stack.pop();
-	
 	}
 	
-	public boolean isInteger(String value)
+	public boolean isInteger(Object o)
 	{
 		
-			if(  Integer.parseInt(value) > 0 )
+			if( o instanceof Integer )
 			{
 				return true;
 			}
