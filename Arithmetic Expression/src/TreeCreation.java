@@ -15,8 +15,10 @@ public class TreeCreation {
 		{
 			if (splited[i] != " ")
 				q.enqueue(splited[i]);
+			
 		}
-
+		
+		
 		// now we have a Queue and a Stack to create Tree
 
 		while (!q.isEmpty()) 
@@ -32,16 +34,13 @@ public class TreeCreation {
 				T.attach(leftChild, rightChild);
 				stack.push(T);
 			}
+			
 		}
 		return stack.pop();
 	}
 
-	@Override
-	public String toString() 
-	{
-
-		return "TreeCreation []";
-	}
+	
+	
 
 	public boolean isOperator(String string) {
 		if (string.equals("+") || string.equals("-") || string.equals("*") || string.equals("/") || string.equals("(")

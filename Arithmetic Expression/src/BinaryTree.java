@@ -126,10 +126,13 @@ public class BinaryTree<AnyType> implements Iterable<AnyType> {
   print(this, "root");
  }
 
- private void print(Node n, String s) {
-  if (n != null) {
+ private void print(Node n, String s) 
+ {
+  if (n != null) 
+  {
    System.out.print(" " + s + " ");
-   if (n.getData() instanceof BinaryTree) {
+   if (n.getData() instanceof BinaryTree) 
+   {
     print((BinaryTree) n.getData(), "");
    } else {
     System.out.println(n.getData());
@@ -145,6 +148,11 @@ public class BinaryTree<AnyType> implements Iterable<AnyType> {
    print(t.getRightChild(), "\\");
   }
 
+ }
+ 
+ public void g(Node n)
+ {
+	 System.out.println(n.getData());
  }
 
 }

@@ -13,14 +13,14 @@ public class TreeEvaluation<AnyType>
 	 
 		while( itr.hasNext())
 		{
-			AnyType value =    (AnyType) itr.next();
-			
+			String value =   String.valueOf(itr.next());
+			System.out.println(value);
 			if(!isOperator(value))		
 			{
 				if(isInteger( value))
 				{
 					
-					stack.push((Integer) value);
+					stack.push(Integer.parseInt(value));
 					System.out.println("print test if is integer  " + value );
 				}
 				
@@ -69,15 +69,14 @@ public class TreeEvaluation<AnyType>
 	
 	}
 	
-	public boolean isInteger(AnyType value)
+	public boolean isInteger(String value)
 	{
 		
-			if(  value instanceof Integer )
+			if(  Integer.parseInt(value) > 0 )
 			{
 				return true;
 			}
-			
-		
+	
 		return false;
 	}
 	
