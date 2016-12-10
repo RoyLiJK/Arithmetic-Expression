@@ -49,16 +49,16 @@ public class TreeEvaluation<AnyType>
 						else // not integer
 						{
 							Integer input;
-					 // Create a Scanner object for keyboard input.
-				      Scanner keyboard = new Scanner(System.in);
+							// Create a Scanner object for keyboard input.
+							Scanner keyboard = new Scanner(System.in);
 				      
-				      // Prompt the user for a number.
-				      System.out.println("Please enter a number: ");			     
-				      input = keyboard.nextInt();
-				      stack.push(input);
-				      // test to show stack
-				      stack.top();
-					
+							// Prompt the user for a number.
+							System.out.println("Please enter a number: ");			     
+							input = keyboard.nextInt();
+							stack.push(input);
+							
+							System.out.println("push successful ");	
+										      
 							
 						}
 					}
@@ -96,13 +96,13 @@ public class TreeEvaluation<AnyType>
 	
 	public boolean isInteger(Object o)
 	{
-		
-			if( o instanceof Integer )
-			{
-				return true;
-			}
-	
-		return false;
+		boolean parsable = true;
+	    try{
+	        Integer.parseInt((String) o);
+	    }catch(NumberFormatException e){
+	        parsable = false;
+	    }
+	    return parsable;
 	}
 	
 	public boolean isOperator(Object object)
