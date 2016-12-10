@@ -22,9 +22,9 @@ public class TreeEvaluation<AnyType>
 	*/
 	
 	
-	public int evaluation(BinaryTree inputTree)
+	public Object evaluation(BinaryTree inputTree)
 	{
-		LinkedStack stack  = new LinkedStack ();	
+		LinkedStack<Integer> stack  = new LinkedStack ();	
 		
 		
 		Iterator i = inputTree.iterator();
@@ -41,14 +41,15 @@ public class TreeEvaluation<AnyType>
 					if(!isOperator(o))		
 					{
 						if(isInteger(o))
-						{
-							stack.push( (Integer) o);
-							System.out.println("print test if is integer  " + o );
+						{	
+							int it = Integer.parseInt((String) o);
+							stack.push(it);
+							System.out.println("push successful  " + o );
 						}
 				
 						else // not integer
 						{
-							Integer input;
+							int input;
 							// Create a Scanner object for keyboard input.
 							Scanner keyboard = new Scanner(System.in);
 				      
@@ -64,8 +65,12 @@ public class TreeEvaluation<AnyType>
 					}
 					else // operator
 					{
-						int right =   (int) stack.pop();
-						int left =   (int) stack.pop();
+						System.out.println("start testing this part ");
+						System.out.println(stack.top());
+						
+						int right =    (int) stack.pop();
+							
+						int left =    (int) stack.pop();
 						int rightOperand = (int) right;
 						int leftOperand = (int) left;
 						int result = 0;
@@ -91,7 +96,7 @@ public class TreeEvaluation<AnyType>
 				}
 			}
 			
-		return (int) stack.pop();
+		return  stack.pop();
 	}
 	
 	public boolean isInteger(Object o)
@@ -99,7 +104,9 @@ public class TreeEvaluation<AnyType>
 		boolean parsable = true;
 	    try{
 	        Integer.parseInt((String) o);
-	    }catch(NumberFormatException e){
+	    }
+	    catch(NumberFormatException e)
+	    {
 	        parsable = false;
 	    }
 	    return parsable;
