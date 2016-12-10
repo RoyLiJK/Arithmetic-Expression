@@ -24,7 +24,7 @@ public class TreeEvaluation<AnyType>
 	
 	public int evaluation(BinaryTree inputTree)
 	{
-		LinkedStack<Integer> stack  = new LinkedStack ();	
+		LinkedStack stack  = new LinkedStack ();	
 		
 		
 		Iterator i = inputTree.iterator();
@@ -37,12 +37,11 @@ public class TreeEvaluation<AnyType>
 			}
 			else
 			{
-					
+				System.out.println("this is the thing to be pass:  " + o );
 					if(!isOperator(o))		
 					{
 						if(isInteger(o))
 						{
-					
 							stack.push( (Integer) o);
 							System.out.println("print test if is integer  " + o );
 						}
@@ -57,13 +56,16 @@ public class TreeEvaluation<AnyType>
 				      System.out.println("Please enter a number: ");			     
 				      input = keyboard.nextInt();
 				      stack.push(input);
-				      
+				      // test to show stack
+				      stack.top();
+					
+							
 						}
 					}
 					else // operator
 					{
-						int right =   stack.pop();
-						int left =   stack.pop();
+						int right =   (int) stack.pop();
+						int left =   (int) stack.pop();
 						int rightOperand = (int) right;
 						int leftOperand = (int) left;
 						int result = 0;
