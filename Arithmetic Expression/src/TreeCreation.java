@@ -14,10 +14,8 @@ public class TreeCreation {
 		for (int i = 0; i < splited.length; i++) 
 		{
 			if (splited[i] != " ")
-				q.enqueue(splited[i]);
-			
-		}
-		
+			q.enqueue(splited[i]);	
+		}		
 		
 		// now we have a Queue and a Stack to create Tree
 
@@ -39,9 +37,6 @@ public class TreeCreation {
 		return stack.pop();
 	}
 
-	
-	
-
 	public boolean isOperator(String string) {
 		if (string.equals("+") || string.equals("-") || string.equals("*") || string.equals("/") || string.equals("(")
 				|| string.equals(")")) {
@@ -49,8 +44,6 @@ public class TreeCreation {
 		}
 		return false;
 	}
-
-	
 
 }
 

@@ -8,26 +8,17 @@ public class Project3 {
 	
 		
 
-		File file = new File("Project3.txt");
+		File file = new File("Project3.txt"); // need to have a space between variable for it to run perfectly
 		Scanner input = new Scanner(file);
 		BinaryTree tree = new BinaryTree();
 		while (input.hasNextLine())
 		{
 			String line = input.nextLine();
 			TreeCreation t = new TreeCreation();
-			 t.createTree(line);
-			
-			
-			TreeEvaluation ev = new TreeEvaluation();
-			
-			System.out.println(ev.evaluation(t.createTree(line)));
+			TreeEvaluation ev = new TreeEvaluation();	
+			ev.evaluation(t.createTree(line));
 			System.out.println("-----------------------------------------------");
-			System.out.println();
-		
-
 		}
-
 		input.close();
-
 	}
 }
